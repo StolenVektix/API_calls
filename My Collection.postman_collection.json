@@ -1,0 +1,82 @@
+{
+  "info": {
+    "_postman_id": "a3ed905b-9135-438e-8259-3f3b6f8ebb8c",
+    "name": "My Collection",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58146097"
+  },
+  "item": [
+    {
+      "name": "OpenWeather - Weather",
+      "item": [
+        {
+          "name": "OW - Weather - LB",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\n    pm.response.to.have.status(200);\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://api.openweathermap.org/data/2.5/weather?q=le bouscat&appid={{API_Key_OpenWeather}}&units=metric",
+              "protocol": "http",
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "path": [
+                "data",
+                "2.5",
+                "weather"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "le bouscat"
+                },
+                {
+                  "key": "appid",
+                  "value": "{{API_Key_OpenWeather}}"
+                },
+                {
+                  "key": "units",
+                  "value": "metric"
+                }
+              ]
+            },
+            "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+          },
+          "response": []
+        }
+      ],
+      "description": "This folder contains requests for interacting with the **OpenWeatherMap API**.\n\nCurrently, it includes:\n\n- **Openweather - GET for city** — Retrieves current weather data for a specified city using the OpenWeatherMap `/data/2.5/weather` endpoint. The request uses the `{{API_Key_OpenWeather}}` environment variable for authentication and returns results in **metric units** (°C, m/s). A basic test is included to verify that the response returns a `200 OK` status code."
+    },
+    {
+      "name": "OpenWeather - Forecast",
+      "item": [
+        {
+          "name": "OW - Forecast - LB",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Contains requests for retrieving 5-day weather forecast data from the OpenWeather API. Requests query the `/data/2.5/forecast` endpoint using a city name and return 3-hour interval forecast entries covering temperature, weather conditions, wind, humidity, and cloud cover. It covers the forecast for a period of 5 days. Results are returned in metric units and authenticated via the `API_Key_OpenWeather` environment variable."
+    }
+  ]
+}
